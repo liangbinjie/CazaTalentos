@@ -31,5 +31,5 @@ project.properties
 project.xml
 /CazaTalentos/build
 /CazaTalentos/nbproject
-/CazaTalentos/manifest.mf
-/CazaTalentos/build.xml
+# /CazaTalentos/manifest.mf
+# /CazaTalentos/build.xml
