@@ -3,9 +3,9 @@ import java.util.LinkedList;
 
 /**
  *
- * @author Binjie
+ * @author Binjie Liang
  */
-public abstract class Usuarios {
+public class Usuarios {
     
     public LinkedList usuarios = new LinkedList<>();
     
