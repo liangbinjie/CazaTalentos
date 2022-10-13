@@ -22,14 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-.DS_Store
-/CazaTalentos/.DS_Store
-/CazaTalentos/src/.DS_Store
-build-impl.xml
-# genfiles.properties
-# project.properties
-project.xml
-/CazaTalentos/build
+# .DS_Store
+# /CazaTalentos/.DS_Store
+# /CazaTalentos/src/.DS_Store
+# build-impl.xml
+# /CazaTalentos/build
 /CazaTalentos/nbproject/private
-/CazaTalentos/manifest.mf
-/CazaTalentos/build.xml
