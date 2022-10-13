@@ -26,10 +26,10 @@ hs_err_pid*
 /CazaTalentos/.DS_Store
 /CazaTalentos/src/.DS_Store
 build-impl.xml
-genfiles.properties
-project.properties
+# genfiles.properties
+# project.properties
 project.xml
 /CazaTalentos/build
-/CazaTalentos/nbproject
-# /CazaTalentos/manifest.mf
-# /CazaTalentos/build.xml
+/CazaTalentos/nbproject/private
+/CazaTalentos/manifest.mf
+/CazaTalentos/build.xml
