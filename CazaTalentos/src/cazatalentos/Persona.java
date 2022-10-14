@@ -5,6 +5,13 @@ public class Persona {
     public String nombre;
     public String apellidos;
     public int edad;
+    public long identificacion;
+    public long telefono;
+    public String ciudad;
+    public String direccion;
+    public String email;
+    
+    
     
     public Persona(){
         this.nombre="";
