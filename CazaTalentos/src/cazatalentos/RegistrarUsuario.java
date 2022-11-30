@@ -1,7 +1,5 @@
 package cazatalentos;
 
-import javax.swing.JComboBox;
-
 
 public class RegistrarUsuario extends javax.swing.JFrame {
 
@@ -65,11 +63,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         Contrasena.setText("Contrasena:");
 
         roleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Entrenador", "Padre/Madre", "Deportista" }));
-        roleBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roleBoxActionPerformed(evt);
-            }
-        });
 
         addBtn.setText("Crear");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -175,10 +168,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void roleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roleBoxActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:

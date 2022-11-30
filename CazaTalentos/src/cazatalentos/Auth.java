@@ -1,11 +1,11 @@
 package cazatalentos;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 public class Auth extends javax.swing.JFrame {
     ImageIcon img = new ImageIcon("src\\icons\\logo.png");
     public static boolean admin; // booleano para verificar si el usuario entrante es un administrador
+    public static boolean padre, entrenador; // o padre o entrenador
     
 
     public Auth() {
@@ -22,7 +22,11 @@ public class Auth extends javax.swing.JFrame {
         boolean autenticado = false;
         for (Usuarios u: Main.usuarios) {
             if (u.getUsername().equals(userField.getText()) && u.getPassword().equals(pass.getText())) {
-                admin = u.getRole().equals("Administrador");
+                switch (u.getRole()) {
+                    case "Administrador" -> admin = true;
+                    case "Padre/Madre" -> padre = true;
+                    case "Entrenador" -> entrenador = true;
+                }
                 autenticado = true;
             } else if (userField.getText().isEmpty() || pass.getText().isEmpty()) {
                 authMsg.setText("Ingrese un usuario o contrasena");

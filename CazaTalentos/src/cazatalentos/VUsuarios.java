@@ -11,6 +11,7 @@ public class VUsuarios extends javax.swing.JFrame {
     public VUsuarios() {
         initComponents();
         setLocationRelativeTo(null);
+        Auth.admin = false;
     }
 
     public void limpiar() {
