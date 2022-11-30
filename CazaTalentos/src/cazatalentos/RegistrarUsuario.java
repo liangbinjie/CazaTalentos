@@ -10,6 +10,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
      */
     public RegistrarUsuario() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     public void add() {
@@ -23,31 +24,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         user.setApellidos(surnameField.getText());
         user.setRole(String.valueOf(roleBox.getSelectedItem()));
         Main.usuarios.add(user);
-          
-//        switch (user.getRole()) {
-//          case "Padre/Madre":
-//                  Padres p = new Padres();
-//                  p.setNombre(user.getNombre());
-//                  p.setApellidos(user.getApellidos());
-//                  p.setIdentificacion(Long.parseLong(idField.getText()));
-//                  p.setEdad(Integer.parseInt(ageField.getText()));
-//                  p.setTelefono(Long.parseLong(phoneField.getText()));
-//                  p.setCiudad(cityField.getText());
-//                  p.setDireccion(addressField.getText());
-//                  p.setEmail(emailField.getText());
-//                  Main.padres.add(p);
-//          case "Deportista":
-//              Deportistas d = new Deportistas();
-//              d.setNombre(user.getNombre());
-//              d.setApellidos(user.getApellidos());
-//              d.setIdentificacion(Long.parseLong(idField.getText()));
-//              d.setEdad(Integer.parseInt(ageField.getText()));
-//              d.setTelefono(Long.parseLong(phoneField.getText()));
-//              d.setCiudad(cityField.getText());
-//              d.setDireccion(addressField.getText());
-//              d.setEmail(emailField.getText());
-//              Main.deportistas.add(d);
-//        }
     }
 
     /**
@@ -202,30 +178,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
     private void roleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleBoxActionPerformed
         // TODO add your handling code here:
-//        JComboBox comboBox = (JComboBox) evt.getSource();
-//
-//        Object selected = comboBox.getSelectedItem();
-//        switch (selected.toString()) {
-//            case "Padre/Madre" -> {
-//                kidIDField.setVisible(true);
-//                kidsLabel.setVisible(true);
-//                addKid.setVisible(true);
-//            }
-//            case "Deportista" -> {
-//                userField.setEditable(false);
-//                userField.setText("");
-//                passField.setEditable(false);
-//                passField.setText("");
-//                kidIDField.setVisible(false);
-//                kidsLabel.setVisible(false);
-//                addKid.setVisible(false);
-//            }
-//            default -> {
-//                kidIDField.setVisible(false);
-//                kidsLabel.setVisible(false);
-//                addKid.setVisible(false);
-//            }
-//        }
     }//GEN-LAST:event_roleBoxActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed

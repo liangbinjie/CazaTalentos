@@ -167,7 +167,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/trash-can.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Borrar usuario"/>
+        <Property name="toolTipText" type="java.lang.String" value="Cambiar estado de usuario"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>

@@ -23,6 +23,7 @@ public class VUsuarios extends javax.swing.JFrame {
     }
     
     public boolean consultar() {
+        // Metodo para consultar un usuario
         boolean existe = false;
         for (Usuarios u: Main.usuarios) {
             if (u.getUsername().equals(searchField.getText())) {
@@ -32,11 +33,26 @@ public class VUsuarios extends javax.swing.JFrame {
                 inactive.setSelected(!u.isEstado());
                 nameField.setText(u.getNombre());
                 surnameField.setText(u.getApellidos());
-
+                existe = true;
             }
         }
                     
         return existe;
+    }
+    
+    public void inactivar() {
+        // Metodo para inactivar un usuario
+        if (consultar()) {
+            for (Usuarios u: Main.usuarios) {
+                if (u.getUsername().equals(searchField.getText())) {
+                    u.setEstado(!u.isEstado());
+                    JOptionPane.showMessageDialog(null, "Se cambio el estado del usuario: " + u.isEstado());
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese un usuario");
+        }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +97,7 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel1.setText("Buscar usuario");
 
         delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/trash-can.png"))); // NOI18N
-        delete.setToolTipText("Borrar usuario");
+        delete.setToolTipText("Cambiar estado de usuario");
         delete.setBorder(null);
         delete.setBorderPainted(false);
         delete.setContentAreaFilled(false);
@@ -243,20 +259,8 @@ public class VUsuarios extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-        //        if (searchField.getText().isEmpty()) {
-            //            limpiar();
-            //            JOptionPane.showMessageDialog(null, "Por favor ingrese una identificacion o nombre usuario");
-            //        } else if (!consultar()) {
-            //            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
-            //        } else if (!Auth.admin) {
-            //            JOptionPane.showMessageDialog(null, "Solo un administrador puede borrar");
-            //        } else {
-            //            int r = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar este usuario", "Eliminando usuario...", JOptionPane.YES_NO_OPTION);
-            //            if (r == 0) {
-                //                System.out.print("Yes");
-                //                borrar();
-                //            }
-            //        }
+        inactivar();
+        consultar();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -272,7 +276,9 @@ public class VUsuarios extends javax.swing.JFrame {
 
     private void modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyActionPerformed
         // TODO add your handling code here:
-        
+        if (Auth.admin == true) {
+            
+        }
         
     }//GEN-LAST:event_modifyActionPerformed
 
