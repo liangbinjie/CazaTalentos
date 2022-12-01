@@ -6,6 +6,8 @@ public class Auth extends javax.swing.JFrame {
     ImageIcon img = new ImageIcon("src\\icons\\logo.png");
     public static boolean admin; // booleano para verificar si el usuario entrante es un administrador
     public static boolean padre, entrenador; // o padre o entrenador
+    public static String nombre, apellido;
+    public static int id;
     
 
     public Auth() {
@@ -27,6 +29,9 @@ public class Auth extends javax.swing.JFrame {
                     case "Padre/Madre" -> padre = true;
                     case "Entrenador" -> entrenador = true;
                 }
+                nombre = u.getNombre();
+                apellido = u.getApellidos();
+                id = u.getId();
                 autenticado = true;
             } else if (userField.getText().isEmpty() || pass.getText().isEmpty()) {
                 authMsg.setText("Ingrese un usuario o contrasena");
