@@ -61,6 +61,11 @@ public class VMain extends javax.swing.JFrame {
         });
 
         catalogos.setText("Catalogos");
+        catalogos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                catalogosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,8 +122,13 @@ public class VMain extends javax.swing.JFrame {
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
+
+    private void catalogosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catalogosActionPerformed
+        // TODO add your handling code here:
+        new VCatalogos().setVisible(true);
+    }//GEN-LAST:event_catalogosActionPerformed
 
     /**
      * @param args the command line arguments
