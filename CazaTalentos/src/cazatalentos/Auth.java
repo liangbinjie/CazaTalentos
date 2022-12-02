@@ -8,6 +8,7 @@ public class Auth extends javax.swing.JFrame {
     public static boolean padre, entrenador; // o padre o entrenador
     public static String nombre, apellido;
     public static int id;
+    public static String edad, identificacion, phone, city, address, email;
     
 
     public Auth() {
@@ -33,6 +34,7 @@ public class Auth extends javax.swing.JFrame {
                 apellido = u.getApellidos();
                 id = u.getId();
                 autenticado = true;
+                rellenar();
             } else if (userField.getText().isEmpty() || pass.getText().isEmpty()) {
                 authMsg.setText("Ingrese un usuario o contrasena");
             } else {
@@ -42,6 +44,27 @@ public class Auth extends javax.swing.JFrame {
         return autenticado;
     }
         
+    public static void rellenar() {
+        for (Padres p: Main.padres) {
+            if (Auth.id == p.getId()) {
+                edad = String.valueOf(p.getEdad());
+                identificacion = String.valueOf(p.getIdentificacion());
+                phone = String.valueOf(p.getTelefono());
+                city = p.getCiudad();
+                address = p.getDireccion();
+                email = p.getEmail();       
+            }
+        }
+    }
+    
+    public static void limpiar() {
+        edad = "";
+        identificacion = "";
+        phone = "";
+        city = "";
+        address = "";
+        email = "";
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

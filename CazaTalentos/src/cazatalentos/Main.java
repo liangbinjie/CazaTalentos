@@ -11,18 +11,13 @@ public class Main {
 
     
     public Main() {
-        Usuarios usuario = new Usuarios();
-        usuario.setId(1);
-        usuario.setUsername("admin");
-        usuario.setPassword("admin12345");
-        usuario.setNombre("Admin");
-        usuario.setApellidos("");
-        usuario.setRole("Administrador");
-        usuario.setEstado(true);
-        usuarios.add(usuario);
-        Persona p = new Persona(1, "Admin", "", 20, 115600, 123, "asd", "ad", "asd");
-        administradores.add(p);
         
+    }
+    
+    public void mostrar() {
+        for (int i=0; i<padres.size(); i++) {
+            System.out.println(padres.get(i).getNombre());
+        }
     }
     
 }

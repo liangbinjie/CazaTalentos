@@ -3,7 +3,7 @@ package cazatalentos;
 import javax.swing.JOptionPane;
 
 public class VMain extends javax.swing.JFrame {
-
+    Usuarios usuario = new Usuarios();
     /**
      * Creates new form VMain
      */
@@ -12,6 +12,16 @@ public class VMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Main m = new Main();
         setResizable(false);
+        usuario.setId(1);
+        usuario.setUsername("admin");
+        usuario.setPassword("admin12345");
+        usuario.setNombre("Admin");
+        usuario.setApellidos("");
+        usuario.setRole("Administrador");
+        usuario.setEstado(true);
+        Main.usuarios.add(usuario);
+        Persona p = new Persona(1, "Admin", "", 20, 115600, 123, "asd", "ad", "asd");
+        Main.administradores.add(p);
     }
 
     /**

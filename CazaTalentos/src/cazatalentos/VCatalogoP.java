@@ -1,7 +1,8 @@
 package cazatalentos;
 
-public class VCatalogoP extends javax.swing.JFrame {
+import javax.swing.JOptionPane;
 
+public class VCatalogoP extends javax.swing.JFrame {
     /**
      * Creates new form VCatalogoP
      */
@@ -12,21 +13,13 @@ public class VCatalogoP extends javax.swing.JFrame {
         nameField.setText(Auth.nombre);
         surnameField.setText(Auth.apellido);
         userID.setText(String.valueOf(Auth.id));
-        autorellenar();
-    }
-    
-    public void autorellenar() {
-        for (Padres p: Main.padres) {
-            if (Auth.id == p.getId()) {
-                ageField.setText(String.valueOf(p.getEdad()));
-                idField.setText(String.valueOf(p.getIdentificacion()));
-                phoneField.setText(String.valueOf(p.getTelefono()));
-                cityField.setText(p.getCiudad());
-                addressField.setText(p.getDireccion());
-                emailField.setText(p.getEmail());            
-            }
-        }
-
+        
+        ageField.setText(Auth.edad);
+        idField.setText(Auth.identificacion);
+        phoneField.setText(Auth.phone);
+        cityField.setText(Auth.city);
+        addressField.setText(Auth.address);
+        emailField.setText(Auth.email);     
     }
     
     public void guardar() {
@@ -35,8 +28,20 @@ public class VCatalogoP extends javax.swing.JFrame {
         long telefono = Long.parseLong(phoneField.getText());
         Padres p = new Padres(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
         Main.padres.add(p);
-        System.out.println("Guardado");
-        
+        System.out.println("Informacion guardada");
+    }
+    
+    public boolean borrar() {
+        boolean borrado = false;
+        System.out.println(Main.padres.size());
+        for (int i=0; i<Main.padres.size(); i++) {
+            if (Main.padres.get(i).getId() == Auth.id) {
+                Main.padres.remove(i);
+                borrado = true;
+                Auth.limpiar();
+            }
+        }
+        return borrado;
     }
 
     /**
@@ -79,6 +84,11 @@ public class VCatalogoP extends javax.swing.JFrame {
         delete.setBorder(null);
         delete.setBorderPainted(false);
         delete.setContentAreaFilled(false);
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
         save.setToolTipText("Agregar usuario");
@@ -92,7 +102,7 @@ public class VCatalogoP extends javax.swing.JFrame {
         });
 
         modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/lapiz.png"))); // NOI18N
-        modify.setToolTipText("Modificar usuario");
+        modify.setToolTipText("Habilitar modificaciones");
         modify.setBorder(null);
         modify.setBorderPainted(false);
         modify.setContentAreaFilled(false);
@@ -130,6 +140,17 @@ public class VCatalogoP extends javax.swing.JFrame {
 
         surnameField.setEditable(false);
 
+        idField.setEditable(false);
+
+        ageField.setEditable(false);
+
+        phoneField.setEditable(false);
+
+        cityField.setEditable(false);
+
+        emailField.setEditable(false);
+
+        addressField.setEditable(false);
         addressField.setColumns(20);
         addressField.setLineWrap(true);
         addressField.setRows(5);
@@ -255,14 +276,29 @@ public class VCatalogoP extends javax.swing.JFrame {
 
     private void modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyActionPerformed
         // TODO add your handling code here:
-        
+        idField.setEditable(true);
+        ageField.setEditable(true);
+        phoneField.setEditable(true);
+        addressField.setEditable(true);
+        cityField.setEditable(true);
+        emailField.setEditable(true);
     }//GEN-LAST:event_modifyActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
+        borrar();
         guardar();
-        System.out.println(Main.padres.get(0));
+        Auth.rellenar();
     }//GEN-LAST:event_saveActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+        if (borrar()) {
+            JOptionPane.showMessageDialog(null, "Informacion borrada");
+        } else {
+            JOptionPane.showMessageDialog(null, "La informacion no pudo ser removida");
+        }
+    }//GEN-LAST:event_deleteActionPerformed
 
     /**
      * @param args the command line arguments

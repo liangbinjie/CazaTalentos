@@ -15,6 +15,7 @@ public class VCatalogos extends javax.swing.JFrame {
         Auth.padre = false;
         Auth.entrenador = false;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
