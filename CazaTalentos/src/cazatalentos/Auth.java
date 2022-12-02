@@ -1,6 +1,7 @@
 package cazatalentos;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Auth extends javax.swing.JFrame {
     ImageIcon img = new ImageIcon("src\\icons\\logo.png");
@@ -24,7 +25,7 @@ public class Auth extends javax.swing.JFrame {
     public boolean autenticar() {
         boolean autenticado = false;
         for (Usuarios u: Main.usuarios) {
-            if (u.getUsername().equals(userField.getText()) && u.getPassword().equals(pass.getText())) {
+            if (u.getUsername().equals(userField.getText()) && u.getPassword().equals(pass.getText()) && u.isEstado() == true) {
                 switch (u.getRole()) {
                     case "Administrador" -> admin = true;
                     case "Padre/Madre" -> padre = true;
@@ -37,6 +38,8 @@ public class Auth extends javax.swing.JFrame {
                 rellenar();
             } else if (userField.getText().isEmpty() || pass.getText().isEmpty()) {
                 authMsg.setText("Ingrese un usuario o contrasena");
+            } else if (u.isEstado() == false) {
+                JOptionPane.showMessageDialog(null, "Usuario inactivo");
             } else {
                 authMsg.setText("Credenciales incorrectas");
             }

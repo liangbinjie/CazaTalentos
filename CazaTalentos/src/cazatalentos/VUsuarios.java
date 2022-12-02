@@ -71,7 +71,6 @@ public class VUsuarios extends javax.swing.JFrame {
         add = new javax.swing.JButton();
         userField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        modify = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -97,7 +96,7 @@ public class VUsuarios extends javax.swing.JFrame {
 
         jLabel1.setText("Buscar usuario");
 
-        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/trash-can.png"))); // NOI18N
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/on.png"))); // NOI18N
         delete.setToolTipText("Cambiar estado de usuario");
         delete.setBorder(null);
         delete.setBorderPainted(false);
@@ -120,17 +119,6 @@ public class VUsuarios extends javax.swing.JFrame {
         });
 
         userField.setEditable(false);
-
-        modify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/lapiz.png"))); // NOI18N
-        modify.setToolTipText("Modificar usuario");
-        modify.setBorder(null);
-        modify.setBorderPainted(false);
-        modify.setContentAreaFilled(false);
-        modify.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifyActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Usuario:");
@@ -186,8 +174,6 @@ public class VUsuarios extends javax.swing.JFrame {
                         .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(modify, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -217,8 +203,7 @@ public class VUsuarios extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modify, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -260,8 +245,13 @@ public class VUsuarios extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-        inactivar();
-        consultar();
+        if (Auth.admin == true) {
+            inactivar();
+            consultar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Solo un administrador puede cambiar el estado de los usuarios, por favor inicie sesion");
+            new Auth().setVisible(true);
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -274,14 +264,6 @@ public class VUsuarios extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_addActionPerformed
-
-    private void modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyActionPerformed
-        // TODO add your handling code here:
-        if (Auth.admin == true) {
-            
-        }
-        
-    }//GEN-LAST:event_modifyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,7 +312,6 @@ public class VUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton modify;
     private javax.swing.JTextField nameField;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchField;
