@@ -9,16 +9,5 @@ public class Main {
     public static ArrayList<Padres> padres = new ArrayList<>();
     public static ArrayList<Persona> administradores = new ArrayList<>();
     public static ArrayList<Persona> entrenadores = new ArrayList<>();
-
-    
-    public Main() {
-        
-    }
-    
-    public void mostrar() {
-        for (int i=0; i<padres.size(); i++) {
-            System.out.println(padres.get(i).getNombre());
-        }
-    }
     
 }
