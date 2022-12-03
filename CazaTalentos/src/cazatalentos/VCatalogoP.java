@@ -1,5 +1,6 @@
 package cazatalentos;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class VCatalogoP extends javax.swing.JFrame {
@@ -10,10 +11,12 @@ public class VCatalogoP extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        Auth.limpiar();
+        Auth.rellenar();
         nameField.setText(Auth.nombre);
         surnameField.setText(Auth.apellido);
         userID.setText(String.valueOf(Auth.id));
-        
+
         ageField.setText(Auth.edad);
         idField.setText(Auth.identificacion);
         phoneField.setText(Auth.phone);
@@ -26,21 +29,39 @@ public class VCatalogoP extends javax.swing.JFrame {
         int edad = Integer.parseInt(ageField.getText());
         long identificacion = Long.parseLong(idField.getText());
         long telefono = Long.parseLong(phoneField.getText());
-        Padres p = new Padres(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
-        Main.padres.add(p);
-        System.out.println("Informacion guardada");
+        if (Auth.padre) {
+            Padres p = new Padres(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
+            Main.padres.add(p);
+            System.out.println("Informacion guardada");
+        } else if (Auth.entrenador) {
+            Persona e = new Persona(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
+            Main.entrenadores.add(e);
+            System.out.println("Informacion guardada");
+        }
+
     }
     
     public boolean borrar() {
         boolean borrado = false;
-        System.out.println(Main.padres.size());
-        for (int i=0; i<Main.padres.size(); i++) {
-            if (Main.padres.get(i).getId() == Auth.id) {
-                Main.padres.remove(i);
-                borrado = true;
-                Auth.limpiar();
+        
+        if (Auth.padre) {
+            for (int i=0; i<Main.padres.size(); i++) {
+                if (Main.padres.get(i).getId() == Auth.id) {
+                    Main.padres.remove(i);
+                    borrado = true;
+                    Auth.limpiar();
+                }
+            }
+        } else if (Auth.entrenador) {
+            for (int i=0; i<Main.entrenadores.size(); i++) {
+                if (Main.entrenadores.get(i).getId() == Auth.id) {
+                    Main.entrenadores.remove(i);
+                    borrado = true;
+                    Auth.limpiar();
+                }
             }
         }
+        
         return borrado;
     }
 
@@ -78,6 +99,11 @@ public class VCatalogoP extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closing(evt);
+            }
+        });
 
         delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/trash-can.png"))); // NOI18N
         delete.setToolTipText("Borrar usuario");
@@ -299,6 +325,13 @@ public class VCatalogoP extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La informacion no pudo ser removida");
         }
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void closing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closing
+        // TODO add your handling code here:
+        Auth.admin = false;
+        Auth.padre = false;
+        Auth.entrenador = false;
+    }//GEN-LAST:event_closing
 
     /**
      * @param args the command line arguments

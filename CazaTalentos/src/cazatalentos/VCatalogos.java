@@ -30,7 +30,7 @@ public class VCatalogos extends javax.swing.JFrame {
         padres = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        trainersBtn = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -49,8 +49,18 @@ public class VCatalogos extends javax.swing.JFrame {
         jButton2.setText("Rutinas");
 
         jButton3.setText("Deportistas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Entrenadores");
+        trainersBtn.setText("Entrenadores");
+        trainersBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trainersBtnActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Deportes");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +77,7 @@ public class VCatalogos extends javax.swing.JFrame {
                 .addContainerGap(105, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(trainersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(padres, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -81,7 +91,7 @@ public class VCatalogos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(trainersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -114,6 +124,20 @@ public class VCatalogos extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_padresActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void trainersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainersBtnActionPerformed
+        // TODO add your handling code here:
+        if (Auth.entrenador==true) {
+            new VCatalogoP().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor autentiquese como entrenador");
+            new Auth().setVisible(true);
+        }
+    }//GEN-LAST:event_trainersBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,10 +177,10 @@ public class VCatalogos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton padres;
+    private javax.swing.JButton trainersBtn;
     // End of variables declaration//GEN-END:variables
 }

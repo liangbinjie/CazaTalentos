@@ -8,6 +8,7 @@ public class Main {
     public static ArrayList<Deportistas> deportistas = new ArrayList<>();
     public static ArrayList<Padres> padres = new ArrayList<>();
     public static ArrayList<Persona> administradores = new ArrayList<>();
+    public static ArrayList<Persona> entrenadores = new ArrayList<>();
 
     
     public Main() {

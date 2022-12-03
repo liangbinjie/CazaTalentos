@@ -44,7 +44,7 @@
                   <EmptySpace pref="105" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton5" min="-2" pref="141" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="trainersBtn" min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="padres" min="-2" pref="141" max="-2" attributes="0"/>
@@ -61,7 +61,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton3" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="trainersBtn" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton5" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -89,11 +89,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Deportistas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="trainersBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Entrenadores"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trainersBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>

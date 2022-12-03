@@ -18,6 +18,9 @@ public class Auth extends javax.swing.JFrame {
         setTitle("Login Sistema Caza Talentos");
         setLocationRelativeTo(null);
         setIconImage(img.getImage());
+        admin = false;
+        padre = false;
+        entrenador = false;
     }
     
     
@@ -48,16 +51,30 @@ public class Auth extends javax.swing.JFrame {
     }
         
     public static void rellenar() {
-        for (Padres p: Main.padres) {
-            if (Auth.id == p.getId()) {
-                edad = String.valueOf(p.getEdad());
-                identificacion = String.valueOf(p.getIdentificacion());
-                phone = String.valueOf(p.getTelefono());
-                city = p.getCiudad();
-                address = p.getDireccion();
-                email = p.getEmail();       
+        if (padre) {
+            for (Padres p: Main.padres) { // cambiar esto 
+                if (Auth.id == p.getId()) {
+                    edad = String.valueOf(p.getEdad());
+                    identificacion = String.valueOf(p.getIdentificacion());
+                    phone = String.valueOf(p.getTelefono());
+                    city = p.getCiudad();
+                    address = p.getDireccion();
+                    email = p.getEmail();       
+                }
+            }
+        } else if (entrenador) {
+            for (Persona e: Main.entrenadores) {
+                if (Auth.id == e.getId()) {
+                    edad = String.valueOf(e.getEdad());
+                    identificacion = String.valueOf(e.getIdentificacion());
+                    phone = String.valueOf(e.getTelefono());
+                    city = e.getCiudad();
+                    address = e.getDireccion();
+                    email = e.getEmail();       
+                }
             }
         }
+
     }
     
     public static void limpiar() {
