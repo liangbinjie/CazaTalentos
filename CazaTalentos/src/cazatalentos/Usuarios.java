@@ -19,6 +19,16 @@ public class Usuarios {
         this.estado = false;
     }
 
+    public Usuarios(int id, String username, String password, String nombre, String apellidos, String role, boolean estado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.estado = estado;
+    }
+
     public int getId() {
         return id;
     }
