@@ -30,9 +30,9 @@ public class Auth extends javax.swing.JFrame {
         for (Usuarios u: Main.usuarios) {
             if (u.getUsername().equals(userField.getText()) && u.getPassword().equals(pass.getText()) && u.isEstado() == true) {
                 switch (u.getRole()) {
-                    case "Administrador" -> admin = true;
-                    case "Padre/Madre" -> padre = true;
-                    case "Entrenador" -> entrenador = true;
+                    case "Administrador" : admin = true;
+                    case "Padre/Madre" : padre = true;
+                    case "Entrenador" : entrenador = true;
                 }
                 nombre = u.getNombre();
                 apellido = u.getApellidos();
