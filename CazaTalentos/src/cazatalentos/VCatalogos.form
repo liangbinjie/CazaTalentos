@@ -43,10 +43,10 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="105" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton5" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="deportes" min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="trainersBtn" min="-2" pref="141" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="141" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="deportistas" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="rutinas" min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="padres" min="-2" pref="141" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
@@ -59,13 +59,13 @@
                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   <Component id="padres" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="deportistas" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="trainersBtn" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton5" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="deportes" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="rutinas" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace pref="92" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -80,17 +80,17 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="padresActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="rutinas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rutinas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="deportistas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Deportistas"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deportistasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="trainersBtn">
@@ -101,12 +101,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trainersBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="deportes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Deportes"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deportesActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

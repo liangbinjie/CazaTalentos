@@ -28,10 +28,10 @@ public class VCatalogos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         padres = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        rutinas = new javax.swing.JButton();
+        deportistas = new javax.swing.JButton();
         trainersBtn = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        deportes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -46,12 +46,12 @@ public class VCatalogos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Rutinas");
+        rutinas.setText("Rutinas");
 
-        jButton3.setText("Deportistas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        deportistas.setText("Deportistas");
+        deportistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                deportistasActionPerformed(evt);
             }
         });
 
@@ -62,10 +62,10 @@ public class VCatalogos extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Deportes");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        deportes.setText("Deportes");
+        deportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                deportesActionPerformed(evt);
             }
         });
 
@@ -76,10 +76,10 @@ public class VCatalogos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(105, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deportes, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(trainersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deportistas, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rutinas, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(padres, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(94, 94, 94))
         );
@@ -89,13 +89,13 @@ public class VCatalogos extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addComponent(padres, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deportistas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(trainersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deportes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rutinas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
 
@@ -108,9 +108,9 @@ public class VCatalogos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void deportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deportesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_deportesActionPerformed
 
     private void padresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_padresActionPerformed
         // TODO add your handling code here:
@@ -125,9 +125,15 @@ public class VCatalogos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_padresActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void deportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deportistasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        if (Auth.admin==true) {
+            new VCatalogoD().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor autentiquese como administrador");
+            new Auth().setVisible(true);
+        }
+    }//GEN-LAST:event_deportistasActionPerformed
 
     private void trainersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainersBtnActionPerformed
         // TODO add your handling code here:
@@ -175,12 +181,12 @@ public class VCatalogos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton deportes;
+    private javax.swing.JButton deportistas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton padres;
+    private javax.swing.JButton rutinas;
     private javax.swing.JButton trainersBtn;
     // End of variables declaration//GEN-END:variables
 }

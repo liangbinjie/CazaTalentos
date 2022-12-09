@@ -73,6 +73,10 @@ public class Auth extends javax.swing.JFrame {
                     email = e.getEmail();       
                 }
             }
+        } else if (admin) {
+            nombre = "";
+            apellido = "";
+            id = 0;
         }
 
     }

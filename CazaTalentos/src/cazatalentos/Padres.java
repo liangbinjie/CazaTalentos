@@ -13,8 +13,6 @@ public class Padres extends Persona {
     public Padres(int id, String nombre, String apellidos, int edad, long identificacion, long telefono, String ciudad, String direccion, String email) {
         super(id, nombre, apellidos, edad, identificacion, telefono, ciudad, direccion, email);
     }
-    
-    
 
     public ArrayList<Long> getHijos() {
         return hijos;
@@ -23,5 +21,5 @@ public class Padres extends Persona {
     public void setHijos(ArrayList<Long> hijos) {
         this.hijos = hijos;
     }
-    
+
 }
