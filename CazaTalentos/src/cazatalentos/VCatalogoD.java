@@ -1,7 +1,6 @@
 package cazatalentos;
 
 import java.awt.HeadlessException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class VCatalogoD extends javax.swing.JFrame {
@@ -63,7 +62,6 @@ public class VCatalogoD extends javax.swing.JFrame {
     }
     
     public boolean search(long identificacion) {
-        limpiar();
         boolean existe = false;
         Deportistas dp = new Deportistas();
         for (Deportistas d: Main.deportistas) {
@@ -72,6 +70,7 @@ public class VCatalogoD extends javax.swing.JFrame {
                 existe = true;
             }
         }
+        
         if (existe) {
             nameField.setText(dp.getNombre());
             surnameField.setText(dp.getApellidos());
@@ -88,9 +87,8 @@ public class VCatalogoD extends javax.swing.JFrame {
     
     public void modificar() {
         if (!searchField.getText().isEmpty()) {
-            Long identificacion = Long.parseLong(searchField.getText());
-            if (search(identificacion)) { // si no es un nuevo usuario
-                
+            if (search(Long.parseLong(searchField.getText()))) {
+                eliminar(Long.parseLong(searchField.getText()));
             }
         }
         nameField.setEditable(true);
@@ -107,14 +105,11 @@ public class VCatalogoD extends javax.swing.JFrame {
     
     public boolean eliminar(long id) {
         boolean eliminado = false;
-        for (Deportistas d: Main.deportistas) {
-            int index = 0;
-            if (d.getIdentificacion() == id) {
-                Main.deportistas.remove(index);
+        for (int i=0; i<Main.deportistas.size(); i++) {
+            if (Main.deportistas.get(i).getIdentificacion() == id) {
+                Main.deportistas.remove(i);
                 eliminado = true;
-                limpiar();
             }
-            index++;
         }
         
         return eliminado;
@@ -385,6 +380,7 @@ public class VCatalogoD extends javax.swing.JFrame {
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
+        limpiar();
         if (!searchField.getText().isEmpty()) {
             boolean existe = search(Long.parseLong(searchField.getText()));
             if (!existe) {

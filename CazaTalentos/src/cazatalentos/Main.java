@@ -9,5 +9,9 @@ public class Main {
     public static ArrayList<Padres> padres = new ArrayList<>();
     public static ArrayList<Persona> administradores = new ArrayList<>();
     public static ArrayList<Persona> entrenadores = new ArrayList<>();
+    public static ArrayList<Deportes> deportes = new ArrayList<>();
+    public static ArrayList<Rutinas> rutinas = new ArrayList<>();
+    
+
     
 }
