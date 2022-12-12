@@ -99,11 +99,16 @@ public class VCatalogoP extends javax.swing.JFrame {
     }
     
     public void agregarHijo(int id) {
-        for (Padres p: Main.padres) {
-            if (p.getId() == id) {
-                p.getHijos().add(kField.getText());
+        if (Main.searchD(Long.parseLong(kField.getText()))) {
+            for (Padres p: Main.padres) {
+                if (p.getId() == id) {
+                    p.getHijos().add(kField.getText());
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Deportista no existe");
         }
+        
     }
 
     /**

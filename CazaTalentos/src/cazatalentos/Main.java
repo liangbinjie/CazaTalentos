@@ -12,6 +12,14 @@ public class Main {
     public static ArrayList<Deportes> deportes = new ArrayList<>();
     public static ArrayList<Rutinas> rutinas = new ArrayList<>();
     
-
     
+    // metodo estatico para buscar la existencia de un deportista
+    public static boolean searchD(long identificacion) {
+        for (Deportistas d: Main.deportistas) {
+            if (d.getIdentificacion() == identificacion) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
