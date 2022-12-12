@@ -47,6 +47,11 @@ public class VCatalogos extends javax.swing.JFrame {
         });
 
         rutinas.setText("Rutinas");
+        rutinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rutinasActionPerformed(evt);
+            }
+        });
 
         deportistas.setText("Deportistas");
         deportistas.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +115,7 @@ public class VCatalogos extends javax.swing.JFrame {
 
     private void deportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deportesActionPerformed
         // TODO add your handling code here:
+        new VCatalogoDeportes().setVisible(true);
     }//GEN-LAST:event_deportesActionPerformed
 
     private void padresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_padresActionPerformed
@@ -120,9 +126,6 @@ public class VCatalogos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor autentiquese como padre");
             new Auth().setVisible(true);
         }
-        
-
-
     }//GEN-LAST:event_padresActionPerformed
 
     private void deportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deportistasActionPerformed
@@ -144,6 +147,11 @@ public class VCatalogos extends javax.swing.JFrame {
             new Auth().setVisible(true);
         }
     }//GEN-LAST:event_trainersBtnActionPerformed
+
+    private void rutinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutinasActionPerformed
+        // TODO add your handling code here:
+        new VCatalogoRutinas().setVisible(true);
+    }//GEN-LAST:event_rutinasActionPerformed
 
     /**
      * @param args the command line arguments

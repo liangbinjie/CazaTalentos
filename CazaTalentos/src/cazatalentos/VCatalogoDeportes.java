@@ -9,6 +9,8 @@ public class VCatalogoDeportes extends javax.swing.JFrame {
      */
     public VCatalogoDeportes() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
     
     public void agregar() {
@@ -24,10 +26,22 @@ public class VCatalogoDeportes extends javax.swing.JFrame {
     }
     
     public void inactivar() {
+        boolean x = false;
         if (buscar()) {
             Deportes d = Main.deportes.get(index);
-            d.setEstado(!d.getEstado());
-            JOptionPane.showMessageDialog(null, "Estado de deporte cambiado a: " + d.getEstado());
+            for (Rutinas r: Main.rutinas) {
+                if (r.getDeporte().equals(d.getNombre())) {
+                    x = true;
+                }
+            }
+            
+            if (x) {
+                JOptionPane.showMessageDialog(null, "No se puede inactivar porque hay rutinas asociadas a este deporte");
+            } else {
+                d.setEstado(!d.getEstado());
+                JOptionPane.showMessageDialog(null, "Estado de deporte cambiado a: " + d.getEstado());
+            }
+            
         }
     }
     
@@ -66,7 +80,7 @@ public class VCatalogoDeportes extends javax.swing.JFrame {
         stateField = new javax.swing.JCheckBox();
         searchBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nombre");
 
@@ -149,7 +163,7 @@ public class VCatalogoDeportes extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, Short.MAX_VALUE))
+                .addGap(34, 34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

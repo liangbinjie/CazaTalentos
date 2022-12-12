@@ -9,8 +9,9 @@ public class VCatalogoRutinas extends javax.swing.JFrame {
      */
     public VCatalogoRutinas() {
         initComponents();
-        Deportes de = new Deportes("Soccer", "Akjaskdsa", true);
-        Main.deportes.add(de); // de esta forma verificamos que la rutina exista
+        setLocationRelativeTo(null);
+        setResizable(false);
+        // de esta forma verificamos que la rutina exista
         for (Deportes d: Main.deportes) {
             deportBox.addItem(d.getNombre());
         }
@@ -92,7 +93,7 @@ public class VCatalogoRutinas extends javax.swing.JFrame {
         idField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Deporte");
 

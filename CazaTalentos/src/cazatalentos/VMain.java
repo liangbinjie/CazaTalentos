@@ -19,6 +19,8 @@ public class VMain extends javax.swing.JFrame {
         Main.administradores.add(p);
         Usuarios dad = new Usuarios(2, "benji", "123", "Binjie", "Liang", "Padre/Madre", true);
         Main.usuarios.add(dad);
+        Deportes de = new Deportes("Soccer", "Akjaskdsa", true);
+        Main.deportes.add(de); 
     }
 
     /**
@@ -58,6 +60,11 @@ public class VMain extends javax.swing.JFrame {
 
         cajas.setText("Cajas");
         cajas.setBorderPainted(false);
+        cajas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajasActionPerformed(evt);
+            }
+        });
 
         salir.setText("Salir");
         salir.setBorderPainted(false);
@@ -136,6 +143,11 @@ public class VMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         new VCatalogos().setVisible(true);
     }//GEN-LAST:event_catalogosActionPerformed
+
+    private void cajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajasActionPerformed
+        // TODO add your handling code here:
+        new Facturacion().setVisible(true);
+    }//GEN-LAST:event_cajasActionPerformed
 
     /**
      * @param args the command line arguments
