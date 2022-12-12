@@ -1,7 +1,9 @@
 package cazatalentos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 public class VCatalogoP extends javax.swing.JFrame {
     /**
@@ -22,15 +24,32 @@ public class VCatalogoP extends javax.swing.JFrame {
         phoneField.setText(Auth.phone);
         cityField.setText(Auth.city);
         addressField.setText(Auth.address);
-        emailField.setText(Auth.email);     
+        emailField.setText(Auth.email);
+        if (Auth.padre == true) {
+            kLabel.setVisible(true);
+            kField.setVisible(true);
+            kAdd.setVisible(true);
+            kDel.setVisible(true);
+            kTable.setVisible(true);
+            rellenarTablaHijos(Auth.id, kTable);
+        } else {
+            kLabel.setVisible(false);
+            kField.setVisible(false);
+            kAdd.setVisible(false);
+            kDel.setVisible(false);
+            kTable.setVisible(false);
+        }
     }
     
     public void guardar() {
+        String s[] = kTable.getText().split("\n");
+        ArrayList<String> arrayHijos = new ArrayList<>(Arrays.asList(s)); // al llamar a la funcion guardar, estamos creando un nuevo arraylist, lo cual hace que la lista de hijos se pierda
         int edad = Integer.parseInt(ageField.getText());
         long identificacion = Long.parseLong(idField.getText());
         long telefono = Long.parseLong(phoneField.getText());
         if (Auth.padre) {
             Padres p = new Padres(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
+            p.setHijos(arrayHijos);
             Main.padres.add(p);
             System.out.println("Informacion guardada");
         } else if (Auth.entrenador) {
@@ -63,6 +82,28 @@ public class VCatalogoP extends javax.swing.JFrame {
         }
         
         return borrado;
+    }
+    
+    public static void rellenarTablaHijos(int id, JTextArea tabla) {
+        String hijos = "";
+        for (Padres p: Main.padres) {
+            if (p.getId() == id) {
+                for (int i=0; i<p.getHijos().size(); i++) {
+//                    System.out.println(p.getHijos().size());
+//                    System.out.println(p.getHijos().get(i));
+                    hijos += p.getHijos().get(i) + "\n";
+                }
+            }
+        }
+        tabla.setText(hijos);
+    }
+    
+    public void agregarHijo(int id) {
+        for (Padres p: Main.padres) {
+            if (p.getId() == id) {
+                p.getHijos().add(kField.getText());
+            }
+        }
     }
 
     /**
@@ -97,6 +138,13 @@ public class VCatalogoP extends javax.swing.JFrame {
         addressField = new javax.swing.JTextArea();
         userID = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        kField = new javax.swing.JTextPane();
+        kLabel = new javax.swing.JLabel();
+        kAdd = new javax.swing.JButton();
+        kDel = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        kTable = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -184,6 +232,24 @@ public class VCatalogoP extends javax.swing.JFrame {
 
         jLabel1.setText("ID:");
 
+        jScrollPane3.setViewportView(kField);
+
+        kLabel.setText("Hijos Asociados");
+
+        kAdd.setText("Agregar");
+        kAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kAddActionPerformed(evt);
+            }
+        });
+
+        kDel.setText("Eliminar");
+
+        kTable.setColumns(20);
+        kTable.setLineWrap(true);
+        kTable.setRows(5);
+        jScrollPane1.setViewportView(kTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -223,9 +289,18 @@ public class VCatalogoP extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(24, 24, 24)
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(kLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(kAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(kDel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(34, 34, 34)
@@ -237,13 +312,12 @@ public class VCatalogoP extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addGap(44, 44, 44)
-                                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1))))
                 .addGap(37, 37, 37))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +329,9 @@ public class VCatalogoP extends javax.swing.JFrame {
                     .addComponent(modify, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(userID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,12 +365,17 @@ public class VCatalogoP extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(115, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(78, Short.MAX_VALUE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 330, Short.MAX_VALUE)))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(kAdd)
+                            .addComponent(kDel)))
+                    .addComponent(kLabel)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,6 +413,12 @@ public class VCatalogoP extends javax.swing.JFrame {
         Auth.padre = false;
         Auth.entrenador = false;
     }//GEN-LAST:event_closing
+
+    private void kAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kAddActionPerformed
+        // TODO add your handling code here:
+        agregarHijo(Auth.id);
+        rellenarTablaHijos(Auth.id, kTable);
+    }//GEN-LAST:event_kAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -384,8 +471,15 @@ public class VCatalogoP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton kAdd;
+    private javax.swing.JButton kDel;
+    private javax.swing.JTextPane kField;
+    private javax.swing.JLabel kLabel;
+    private javax.swing.JTextArea kTable;
     private javax.swing.JButton modify;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField phoneField;
