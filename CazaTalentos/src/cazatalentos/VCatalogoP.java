@@ -51,9 +51,11 @@ public class VCatalogoP extends javax.swing.JFrame {
             Padres p = new Padres(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
             p.setHijos(arrayHijos);
             Main.padres.add(p);
+            System.out.println("Informacion guardada");
         } else if (Auth.entrenador) {
             Persona e = new Persona(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
             Main.entrenadores.add(e);
+            System.out.println("Informacion guardada");
         }
 
     }
@@ -87,6 +89,8 @@ public class VCatalogoP extends javax.swing.JFrame {
         for (Padres p: Main.padres) {
             if (p.getId() == id) {
                 for (int i=0; i<p.getHijos().size(); i++) {
+//                    System.out.println(p.getHijos().size());
+//                    System.out.println(p.getHijos().get(i));
                     hijos += p.getHijos().get(i) + "\n";
                 }
             }
@@ -397,7 +401,6 @@ public class VCatalogoP extends javax.swing.JFrame {
         borrar();
         guardar();
         Auth.rellenar();
-        JOptionPane.showMessageDialog(null, "Informacion guardada");
     }//GEN-LAST:event_saveActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
