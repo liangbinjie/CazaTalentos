@@ -27,3 +27,6 @@ hs_err_pid*
 /CazaTalentos/src/.DS_Store
 /CazaTalentos/nbproject/private
 /CazaTalentos/build/
+/ClienteCazaT/nbproject/private/
+/ClienteCazaT/build/
+/CazaTalentos/dist/

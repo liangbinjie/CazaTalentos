@@ -3,7 +3,7 @@ package cazatalentos;
 import javax.swing.JOptionPane;
 
 public class VMain extends javax.swing.JFrame {
-    
+    Servidor server = new Servidor();
 
     /**
      * Creates new form VMain
@@ -34,7 +34,7 @@ public class VMain extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         usersBtn = new javax.swing.JButton();
-        reservas = new javax.swing.JButton();
+        facturacion = new javax.swing.JButton();
         cajas = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         catalogos = new javax.swing.JButton();
@@ -55,8 +55,13 @@ public class VMain extends javax.swing.JFrame {
             }
         });
 
-        reservas.setText("Reservas");
-        reservas.setBorderPainted(false);
+        facturacion.setText("Facturacion");
+        facturacion.setBorderPainted(false);
+        facturacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facturacionActionPerformed(evt);
+            }
+        });
 
         cajas.setText("Cajas");
         cajas.setBorderPainted(false);
@@ -92,7 +97,7 @@ public class VMain extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(catalogos, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                             .addComponent(usersBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(reservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(facturacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cajas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(45, 45, 45))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -107,7 +112,7 @@ public class VMain extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(catalogos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(reservas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(facturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cajas, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
@@ -146,8 +151,13 @@ public class VMain extends javax.swing.JFrame {
 
     private void cajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajasActionPerformed
         // TODO add your handling code here:
-        new Facturacion().setVisible(true);
+        server.start();
     }//GEN-LAST:event_cajasActionPerformed
+
+    private void facturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturacionActionPerformed
+        // TODO add your handling code here:
+        new VFacturacion().setVisible(true);
+    }//GEN-LAST:event_facturacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,10 +197,10 @@ public class VMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cajas;
     private javax.swing.JButton catalogos;
+    private javax.swing.JButton facturacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton reservas;
     private javax.swing.JButton salir;
     private javax.swing.JButton usersBtn;
     // End of variables declaration//GEN-END:variables

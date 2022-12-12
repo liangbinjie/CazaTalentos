@@ -47,7 +47,7 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="catalogos" pref="170" max="32767" attributes="0"/>
                               <Component id="usersBtn" max="32767" attributes="0"/>
-                              <Component id="reservas" alignment="1" max="32767" attributes="0"/>
+                              <Component id="facturacion" alignment="1" max="32767" attributes="0"/>
                               <Component id="cajas" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -68,7 +68,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="catalogos" min="-2" pref="55" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="reservas" min="-2" pref="52" max="-2" attributes="0"/>
+                  <Component id="facturacion" min="-2" pref="52" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="cajas" min="-2" pref="54" max="-2" attributes="0"/>
                   <EmptySpace pref="94" max="32767" attributes="0"/>
@@ -93,11 +93,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usersBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="reservas">
+        <Component class="javax.swing.JButton" name="facturacion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reservas"/>
+            <Property name="text" type="java.lang.String" value="Facturacion"/>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facturacionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="cajas">
           <Properties>
