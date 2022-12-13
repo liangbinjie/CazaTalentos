@@ -13,7 +13,9 @@ public class VCatalogoRutinas extends javax.swing.JFrame {
         setResizable(false);
         // de esta forma verificamos que la rutina exista
         for (Deportes d: Main.deportes) {
-            deportBox.addItem(d.getNombre());
+            if (d.getEstado()) {
+                deportBox.addItem(d.getNombre());
+            }
         }
     }
     
@@ -51,6 +53,9 @@ public class VCatalogoRutinas extends javax.swing.JFrame {
  
     static int index;
     public boolean buscar() {
+        if (idField.getText().isEmpty()) {
+            return false;
+        }
         for (int i=0; i<Main.rutinas.size(); i++) {
             if (Main.rutinas.get(i).getId() == Integer.parseInt(idField.getText())){
                 idField.setText(idField.getText());

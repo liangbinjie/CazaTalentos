@@ -30,7 +30,7 @@ public class VCatalogoDeportes extends javax.swing.JFrame {
         if (buscar()) {
             Deportes d = Main.deportes.get(index);
             for (Rutinas r: Main.rutinas) {
-                if (r.getDeporte().equals(d.getNombre())) {
+                if (r.getDeporte().equals(d.getNombre()) && r.isEstado() == true) {
                     x = true;
                 }
             }

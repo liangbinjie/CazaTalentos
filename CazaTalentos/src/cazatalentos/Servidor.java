@@ -51,8 +51,7 @@ public class Servidor extends Thread {
             cl = new Socket();
             
 
-            
-            System.out.println("Esperando conexion...");
+            JOptionPane.showMessageDialog(null, "Servidor en linea, esperando conexion");
             cl = sc.accept();
             System.out.println("Sistema conectado!");
             

@@ -28,9 +28,8 @@ public class VFacturacionM extends javax.swing.JFrame {
             DataInputStream entrada = new DataInputStream(new FileInputStream("Facturas.dat"));
             
             try {
-                Facturacion f = new Facturacion();
-
                 while (true) {
+                    Facturacion f = new Facturacion();
                     f.setFecha(entrada.readUTF());
                     f.setHora(entrada.readUTF());
                     f.setIdCliente(entrada.readLong());
@@ -38,7 +37,7 @@ public class VFacturacionM extends javax.swing.JFrame {
                     f.setApellidos(entrada.readUTF());
                     f.setPagoMensual(entrada.readInt());
                     f.setDescripcionR(entrada.readUTF());
-
+                    System.out.println(f.getIdCliente());
                     facturas.add(f);
                     addRow();
                     facturas.clear();
@@ -66,9 +65,9 @@ public class VFacturacionM extends javax.swing.JFrame {
     public void addRow() {
         DefaultTableModel tbl = (DefaultTableModel) factTable.getModel();
         Object dataRow[] = new Object[7];
-
+        System.out.println(facturas.size());
         for (int i = 0; i < facturas.size(); i++) {
-
+            
             dataRow[0] = facturas.get(i).getFecha();
             dataRow[1] = facturas.get(i).getHora();
             dataRow[2] = facturas.get(i).getIdCliente();

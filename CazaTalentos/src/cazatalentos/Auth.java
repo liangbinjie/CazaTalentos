@@ -26,7 +26,6 @@ public class Auth extends javax.swing.JFrame {
     
     // Funcion para autenticar el usuario
     public boolean autenticar() {
-        boolean autenticado = false;
         for (Usuarios u: Main.usuarios) {
             if (u.getUsername().equals(userField.getText()) && u.getPassword().equals(pass.getText()) && u.isEstado() == true) {
                 switch (u.getRole()) {
@@ -45,17 +44,21 @@ public class Auth extends javax.swing.JFrame {
                 nombre = u.getNombre();
                 apellido = u.getApellidos();
                 id = u.getId();
-                autenticado = true;
                 rellenar();
+                return true;
+            
+            } else if (u.getUsername().equals(userField.getText()) && u.getPassword().equals(pass.getText()) && u.isEstado() == false) {
+                authMsg.setText("Usuario inactivo");
+                
             } else if (userField.getText().isEmpty() || pass.getText().isEmpty()) {
                 authMsg.setText("Ingrese un usuario o contrasena");
-            } else if (u.isEstado() == false) {
-                JOptionPane.showMessageDialog(null, "Usuario inactivo");
+                
             } else {
                 authMsg.setText("Credenciales incorrectas");
+                
             }
         }
-        return autenticado;
+        return false;
     }
         
     public static void rellenar() {

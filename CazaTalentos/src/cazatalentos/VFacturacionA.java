@@ -4,8 +4,9 @@ import java.awt.HeadlessException;
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class VFacturacionA extends javax.swing.JFrame {
@@ -18,6 +19,8 @@ public class VFacturacionA extends javax.swing.JFrame {
         for (Rutinas r: Main.rutinas) {
             idRutinaBox.addItem(String.valueOf(r.getId()));
         }
+        
+        limpiar();
     }
     public void agregarFact(){
         
@@ -32,8 +35,8 @@ public class VFacturacionA extends javax.swing.JFrame {
             a.setDescripcionR(descripcionArea.getText());
 
 
-            Deportistas dp = new Deportistas();
-                for (Deportistas d: Main.deportistas) {
+            Padres dp = new Padres();
+                for (Padres d: Main.padres) {
                     if (d.getIdentificacion() == a.getIdCliente()) {
                         dp = d;
                         existe = true;
@@ -59,7 +62,7 @@ public class VFacturacionA extends javax.swing.JFrame {
             }
             
             else {
-                JOptionPane.showMessageDialog(null, "Deportista no encontrado, revise el ID", "Error",
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado, revise el ID", "Error",
                     JOptionPane.ERROR_MESSAGE);
             }
             
@@ -86,30 +89,21 @@ public class VFacturacionA extends javax.swing.JFrame {
         }
         return false;
     }
-    
-    public boolean buscarDeportista(long identificacion) {
-        boolean existe = false;
-        Deportistas dp = new Deportistas();
-        for (Deportistas d: Main.deportistas) {
-            if (d.getIdentificacion() == identificacion) {
-                dp = d;
-                existe = true;
-            }
-        }
-        
-        if (existe) {
-            
-        }
-        
-        return existe;
-    }
-    
+
     public void limpiar(){
-       fechaField.setText("d/m/y");
-       horaField.setText("HH:mm");
-       clienteField.setText("");
-       pagoField.setText("");
-       descripcionArea.setText("");
+        Date fecha = new Date();
+        int hour = fecha.getHours();
+        int min = fecha.getMinutes();
+        LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int year  = localDate.getYear();
+        int month = localDate.getMonthValue();
+        int day   = localDate.getDayOfMonth();
+        
+        fechaField.setText(day + "/" + month + "/" +year);
+        horaField.setText(hour + ":" + min);
+        clienteField.setText("");
+        pagoField.setText("");
+        descripcionArea.setText("");
     }
     
     
@@ -122,8 +116,6 @@ public class VFacturacionA extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        fechaField = new javax.swing.JTextField();
-        horaField = new javax.swing.JTextField();
         clienteField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         idRutinaBox = new javax.swing.JComboBox<>();
@@ -133,6 +125,8 @@ public class VFacturacionA extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         pagoField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        fechaField = new javax.swing.JFormattedTextField();
+        horaField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -156,13 +150,8 @@ public class VFacturacionA extends javax.swing.JFrame {
             }
         });
 
-        fechaField.setText("d/m/y");
-
-        horaField.setText("HH:mm");
-
         jLabel6.setText("ID Rutina:");
 
-        idRutinaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0" }));
         idRutinaBox.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -184,6 +173,19 @@ public class VFacturacionA extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setText("$");
+
+        fechaField.setEditable(false);
+        fechaField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("12/12/2022"))));
+        fechaField.setText("d/m/y");
+        fechaField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaFieldActionPerformed(evt);
+            }
+        });
+
+        horaField.setEditable(false);
+        horaField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        horaField.setText("HH:mm");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,10 +218,9 @@ public class VFacturacionA extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(pagoField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(horaField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fechaField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(clienteField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(clienteField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(horaField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
@@ -275,6 +276,10 @@ public class VFacturacionA extends javax.swing.JFrame {
         buscarRutina();
     }//GEN-LAST:event_idRutinaBoxPopupMenuWillBecomeInvisible
 
+    private void fechaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaFieldActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -317,8 +322,8 @@ public class VFacturacionA extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField clienteField;
     private javax.swing.JTextArea descripcionArea;
-    private javax.swing.JTextField fechaField;
-    private javax.swing.JTextField horaField;
+    private javax.swing.JFormattedTextField fechaField;
+    private javax.swing.JFormattedTextField horaField;
     private javax.swing.JComboBox<String> idRutinaBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
