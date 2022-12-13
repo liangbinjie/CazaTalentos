@@ -34,14 +34,12 @@ public class VCatalogoDeportes extends javax.swing.JFrame {
                     x = true;
                 }
             }
-            
             if (x) {
                 JOptionPane.showMessageDialog(null, "No se puede inactivar porque hay rutinas asociadas a este deporte");
             } else {
                 d.setEstado(!d.getEstado());
                 JOptionPane.showMessageDialog(null, "Estado de deporte cambiado a: " + d.getEstado());
             }
-            
         }
     }
     

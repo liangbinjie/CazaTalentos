@@ -1,5 +1,6 @@
 package cazatalentos;
 
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -42,22 +43,25 @@ public class VCatalogoP extends javax.swing.JFrame {
     }
     
     public void guardar() {
-        String s[] = kTable.getText().split("\n");
-        ArrayList<String> arrayHijos = new ArrayList<>(Arrays.asList(s)); // al llamar a la funcion guardar, estamos creando un nuevo arraylist, lo cual hace que la lista de hijos se pierda
-        int edad = Integer.parseInt(ageField.getText());
-        long identificacion = Long.parseLong(idField.getText());
-        long telefono = Long.parseLong(phoneField.getText());
-        if (Auth.padre) {
-            Padres p = new Padres(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
-            p.setHijos(arrayHijos);
-            Main.padres.add(p);
-            System.out.println("Informacion guardada");
-        } else if (Auth.entrenador) {
-            Persona e = new Persona(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
-            Main.entrenadores.add(e);
-            System.out.println("Informacion guardada");
+        try {
+            String s[] = kTable.getText().split("\n");
+            ArrayList<String> arrayHijos = new ArrayList<>(Arrays.asList(s)); // al llamar a la funcion guardar, estamos creando un nuevo arraylist, lo cual hace que la lista de hijos se pierda
+            int edad = Integer.parseInt(ageField.getText());
+            long identificacion = Long.parseLong(idField.getText());
+            long telefono = Long.parseLong(phoneField.getText());
+            if (Auth.padre) {
+                Padres p = new Padres(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
+                p.setHijos(arrayHijos);
+                Main.padres.add(p);
+                JOptionPane.showMessageDialog(null, "Informacion guardada");
+            } else if (Auth.entrenador) {
+                Persona e = new Persona(Auth.id, Auth.nombre, Auth.apellido, edad, identificacion, telefono, cityField.getText(), addressField.getText(),emailField.getText());
+                Main.entrenadores.add(e);
+                JOptionPane.showMessageDialog(null,"Informacion guardada");
+            }
+        } catch (HeadlessException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Parte de la informacion ingresada esta erronea, por favor ingrese datos correctos", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }
     
     public boolean borrar() {
