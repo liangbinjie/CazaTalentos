@@ -98,10 +98,7 @@ public class VFacturacionM extends javax.swing.JFrame {
 
         factTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Fecha", "Hora", "ID Cliente", "Nombre", "Apellido", "Pago", "Desc. Rutina"
