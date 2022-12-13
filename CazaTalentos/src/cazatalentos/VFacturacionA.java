@@ -22,6 +22,7 @@ public class VFacturacionA extends javax.swing.JFrame {
         
         limpiar();
     }
+
     public void agregarFact(){
         
         boolean existe = false;
@@ -75,7 +76,7 @@ public class VFacturacionA extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Favor llenar todos los datos de forma correcta");
         }
     }
-    
+
     public boolean buscarRutina() {
         String item = (String) idRutinaBox.getSelectedItem();
         

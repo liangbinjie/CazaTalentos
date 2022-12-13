@@ -30,14 +30,12 @@ public class VCatalogoP extends javax.swing.JFrame {
             kLabel.setVisible(true);
             kField.setVisible(true);
             kAdd.setVisible(true);
-            kDel.setVisible(true);
             kTable.setVisible(true);
             rellenarTablaHijos(Auth.id, kTable);
         } else {
             kLabel.setVisible(false);
             kField.setVisible(false);
             kAdd.setVisible(false);
-            kDel.setVisible(false);
             kTable.setVisible(false);
         }
     }
@@ -151,7 +149,6 @@ public class VCatalogoP extends javax.swing.JFrame {
         kField = new javax.swing.JTextPane();
         kLabel = new javax.swing.JLabel();
         kAdd = new javax.swing.JButton();
-        kDel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         kTable = new javax.swing.JTextArea();
 
@@ -252,8 +249,6 @@ public class VCatalogoP extends javax.swing.JFrame {
             }
         });
 
-        kDel.setText("Eliminar");
-
         kTable.setColumns(20);
         kTable.setLineWrap(true);
         kTable.setRows(5);
@@ -302,11 +297,8 @@ public class VCatalogoP extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(kLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(kAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(kDel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(kAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -379,9 +371,7 @@ public class VCatalogoP extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(kAdd)
-                            .addComponent(kDel)))
+                        .addComponent(kAdd))
                     .addComponent(kLabel)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(147, Short.MAX_VALUE))
@@ -485,7 +475,6 @@ public class VCatalogoP extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton kAdd;
-    private javax.swing.JButton kDel;
     private javax.swing.JTextPane kField;
     private javax.swing.JLabel kLabel;
     private javax.swing.JTextArea kTable;

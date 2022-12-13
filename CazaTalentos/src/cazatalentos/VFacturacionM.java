@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
-public class VFacturacionM extends javax.swing.JFrame {
+public class VFacturacionM extends javax.swing.JFrame implements IFacturacion {
 
     public VFacturacionM() {
         initComponents();
